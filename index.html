@@ -85,6 +85,12 @@
         <a href="#about">About</a>
         <a href="#projects">Work</a>
         <a href="#contact">Contact</a>
+        <a class="btn-back" href="#home" style="display: none; opacity: 0;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19 12H5M12 19l-7-7 7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Back</span>
+        </a>
         <a class="btn-download-cv" href="./Suman_Behura_CV.pdf" download aria-label="Download CV">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
             <path d="M12 3v10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
@@ -120,12 +126,12 @@
 
       <!-- contact & socials (removed) -->
 
-      <section class="stage" aria-hidden="true">
+      <section class="stage" id="stage-main" aria-hidden="true">
         <div class="screen">
           <div class="blob a"></div>
           <div class="blob b"></div>
           <div class="cards">
-            <a class="card" href="#projects">
+            <button class="card" data-subpage="interactive-ui">
               <div class="card-thumb" aria-hidden="true">
                 <img src="./Interactive UI.png" alt="Interactive UI" loading="lazy" onerror="this.style.display='none'" onload="this.style.opacity='1'" />
               </div>
@@ -133,8 +139,8 @@
                 <h4>Interactive UI</h4>
                 <div class="muted">Animations, transitions, microinteractions</div>
               </div>
-            </a>
-            <a class="card" href="#projects">
+            </button>
+            <button class="card" data-subpage="brand-systems">
               <div class="card-thumb" aria-hidden="true">
                 <img src="./Brand Systems.png" alt="Brand Systems" loading="lazy" onerror="this.style.display='none'" onload="this.style.opacity='1'" />
               </div>
@@ -142,8 +148,8 @@
                 <h4>Brand Systems</h4>
                 <div class="muted">Type, color, and voice</div>
               </div>
-            </a>
-            <a class="card" href="#projects">
+            </button>
+            <button class="card" data-subpage="front-end">
               <div class="card-thumb" aria-hidden="true">
                 <img src="./Front-end.png" alt="Front-end" loading="lazy" onerror="this.style.display='none'" onload="this.style.opacity='1'" />
               </div>
@@ -151,8 +157,8 @@
                 <h4>Front-end</h4>
                 <div class="muted">HTML, CSS, JS — fast & accessible</div>
               </div>
-            </a>
-            <a class="card" href="#projects">
+            </button>
+            <button class="card" data-subpage="prototypes">
               <div class="card-thumb" aria-hidden="true">
                 <img src="./Prototypes.png" alt="Prototypes" loading="lazy" onerror="this.style.display='none'" onload="this.style.opacity='1'" />
               </div>
@@ -160,7 +166,246 @@
                 <h4>Prototypes</h4>
                 <div class="muted">Idea → Clickable demo</div>
               </div>
+            </button>
+            <button class="card" data-subpage="backend">
+              <div class="card-thumb" aria-hidden="true">
+                <img src="./Backend.png" alt="Backend" loading="lazy" onerror="this.style.display='none'" onload="this.style.opacity='1'" />
+              </div>
+              <div class="card-content">
+                <h4>Backend</h4>
+                <div class="muted">APIs, databases, server architecture</div>
+              </div>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Interactive UI Sub-page -->
+      <section id="interactive-ui" class="subpage" style="display: none;">
+        <h2 class="section-heading-animate reveal">Interactive UI</h2>
+        <div class="subpage-content">
+          <p class="sub reveal">Animations, transitions, and microinteractions that bring interfaces to life.</p>
+          <div class="projects-grid">
+            <div class="project card themed-card reveal">
+              <img src="./Interactive UI.png" alt="Interactive UI Project" />
+              <div class="project-content">
+                <h4>Button Animations</h4>
+                <p class="muted">Smooth hover effects and click transitions for enhanced user feedback.</p>
+                <div class="project-tags">
+                  <span>CSS</span><span>JavaScript</span><span>UX</span>
+                </div>
+              </div>
+            </div>
+            <div class="project card themed-card reveal" style="transition-delay: 0.1s;">
+              <img src="./Interactive UI.png" alt="Interactive UI Project" />
+              <div class="project-content">
+                <h4>Loading States</h4>
+                <p class="muted">Engaging loaders and skeleton screens for better perceived performance.</p>
+                <div class="project-tags">
+                  <span>Animation</span><span>Interaction</span><span>UX</span>
+                </div>
+              </div>
+            </div>
+            <div class="project card themed-card reveal" style="transition-delay: 0.2s;">
+              <img src="./Interactive UI.png" alt="Interactive UI Project" />
+              <div class="project-content">
+                <h4>Form Interactions</h4>
+                <p class="muted">Intuitive form fields with validation animations and helpful feedback.</p>
+                <div class="project-tags">
+                  <span>Forms</span><span>Validation</span><span>Animation</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Brand Systems Sub-page -->
+      <section id="brand-systems" class="subpage" style="display: none;">
+        <h2 class="section-heading-animate reveal">Brand Systems</h2>
+        <div class="subpage-content">
+          <p class="sub reveal">Comprehensive design systems covering typography, color palettes, and brand voice.</p>
+          <div class="projects-grid">
+            <div class="project card themed-card reveal">
+              <img src="./Brand Systems.png" alt="Brand Systems Project" />
+              <div class="project-content">
+                <h4>Typography System</h4>
+                <p class="muted">Carefully curated font pairings and hierarchy for consistent communication.</p>
+                <div class="project-tags">
+                  <span>Typography</span><span>Branding</span><span>Design</span>
+                </div>
+              </div>
+            </div>
+            <div class="project card themed-card reveal" style="transition-delay: 0.1s;">
+              <img src="./Brand Systems.png" alt="Brand Systems Project" />
+              <div class="project-content">
+                <h4>Color Palette</h4>
+                <p class="muted">Strategic color systems designed for accessibility and visual impact.</p>
+                <div class="project-tags">
+                  <span>Color</span><span>Accessibility</span><span>Design</span>
+                </div>
+              </div>
+            </div>
+            <div class="project card themed-card reveal" style="transition-delay: 0.2s;">
+              <img src="./Brand Systems.png" alt="Brand Systems Project" />
+              <div class="project-content">
+                <h4>Brand Guidelines</h4>
+                <p class="muted">Comprehensive documentation for consistent brand application across platforms.</p>
+                <div class="project-tags">
+                  <span>Guidelines</span><span>Documentation</span><span>Strategy</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Front-end Sub-page -->
+      <section id="front-end" class="subpage" style="display: none;">
+        <h2 class="section-heading-animate reveal">Front-end Development</h2>
+        <div class="subpage-content">
+          <p class="sub reveal">Building fast, accessible, and maintainable web experiences with modern technologies.</p>
+          <div class="projects-grid">
+            <a href="https://sumanbehura-portfolio.netlify.app/" target="_blank" rel="noopener" class="project card themed-card reveal">
+              <img src="./Interactive UI.png" alt="Personal Portfolio" />
+              <div class="project-content">
+                <h4>Personal Portfolio</h4>
+                <p class="muted">A modern, interactive portfolio showcasing design and development skills.</p>
+                <div class="project-tags">
+                  <span>HTML</span><span>CSS</span><span>JavaScript</span>
+                </div>
+              </div>
             </a>
+            <a href="https://link-collectorr.netlify.app/" target="_blank" rel="noopener" class="project card themed-card reveal" style="transition-delay: 0.1s;">
+              <img src="./Front-end.png" alt="Link Collector" />
+              <div class="project-content">
+                <h4>Link Collector</h4>
+                <p class="muted">Save, organize, and manage your favorite links in one place.</p>
+                <div class="project-tags">
+                  <span>Web App</span><span>Storage</span><span>Responsive</span>
+                </div>
+              </div>
+            </a>
+            <a href="https://blackjack-suman.netlify.app/" target="_blank" rel="noopener" class="project card themed-card reveal" style="transition-delay: 0.2s;">
+              <img src="./Front-end.png" alt="Blackjack Game" />
+              <div class="project-content">
+                <h4>Blackjack Game</h4>
+                <p class="muted">Interactive card game built with vanilla JavaScript and responsive design.</p>
+                <div class="project-tags">
+                  <span>Game</span><span>JavaScript</span><span>Interactive</span>
+                </div>
+              </div>
+            </a>
+            <a href="https://calculator-dmo.netlify.app/" target="_blank" rel="noopener" class="project card themed-card reveal" style="transition-delay: 0.3s;">
+              <img src="./Front-end.png" alt="Calculator App" />
+              <div class="project-content">
+                <h4>Calculator App</h4>
+                <p class="muted">Fully functional calculator with modern UI and smooth interactions.</p>
+                <div class="project-tags">
+                  <span>Utility</span><span>React</span><span>UI/UX</span>
+                </div>
+              </div>
+            </a>
+            <a href="https://itemcounterformall.netlify.app/" target="_blank" rel="noopener" class="project card themed-card reveal" style="transition-delay: 0.4s;">
+              <img src="./Front-end.png" alt="Item Counter" />
+              <div class="project-content">
+                <h4>Item Counter</h4>
+                <p class="muted">Simple yet powerful counter application for tracking items and quantities.</p>
+                <div class="project-tags">
+                  <span>Web App</span><span>JavaScript</span><span>Utility</span>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Prototypes Sub-page -->
+      <section id="prototypes" class="subpage" style="display: none;">
+        <h2 class="section-heading-animate reveal">Prototypes & Demos</h2>
+        <div class="subpage-content">
+          <p class="sub reveal">From ideas to interactive clickable demonstrations and working prototypes.</p>
+          <div class="projects-grid">
+            <div class="project card themed-card reveal">
+              <img src="./Prototypes.png" alt="Prototype Project" />
+              <div class="project-content">
+                <h4>Interactive Wireframes</h4>
+                <p class="muted">Functional wireframes for testing user flows before development.</p>
+                <div class="project-tags">
+                  <span>Wireframing</span><span>Prototyping</span><span>UX</span>
+                </div>
+              </div>
+            </div>
+            <div class="project card themed-card reveal" style="transition-delay: 0.1s;">
+              <img src="./Prototypes.png" alt="Prototype Project" />
+              <div class="project-content">
+                <h4>High-Fidelity Prototypes</h4>
+                <p class="muted">Detailed interactive prototypes demonstrating full user experience.</p>
+                <div class="project-tags">
+                  <span>Figma</span><span>Prototyping</span><span>Design</span>
+                </div>
+              </div>
+            </div>
+            <div class="project card themed-card reveal" style="transition-delay: 0.2s;">
+              <img src="./Prototypes.png" alt="Prototype Project" />
+              <div class="project-content">
+                <h4>Clickable Demos</h4>
+                <p class="muted">Fully interactive prototypes showcasing complete user journeys and flows.</p>
+                <div class="project-tags">
+                  <span>Interactive</span><span>Demo</span><span>Prototype</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Backend Sub-page -->
+      <section id="backend" class="subpage" style="display: none;">
+        <h2 class="section-heading-animate reveal">Backend Development</h2>
+        <div class="subpage-content">
+          <p class="sub reveal">Building robust, scalable server-side solutions with modern technologies and best practices.</p>
+          <div class="projects-grid">
+            <div class="project card themed-card reveal">
+              <img src="./Backend.png" alt="Backend Project" />
+              <div class="project-content">
+                <h4>RESTful APIs</h4>
+                <p class="muted">Designing and implementing robust REST APIs for seamless client-server communication.</p>
+                <div class="project-tags">
+                  <span>REST</span><span>Node.js</span><span>Express</span>
+                </div>
+              </div>
+            </div>
+            <div class="project card themed-card reveal" style="transition-delay: 0.1s;">
+              <img src="./Backend.png" alt="Backend Project" />
+              <div class="project-content">
+                <h4>Database Design</h4>
+                <p class="muted">Efficient database architecture and optimization for high-performance applications.</p>
+                <div class="project-tags">
+                  <span>MongoDB</span><span>SQL</span><span>Database</span>
+                </div>
+              </div>
+            </div>
+            <div class="project card themed-card reveal" style="transition-delay: 0.2s;">
+              <img src="./Backend.png" alt="Backend Project" />
+              <div class="project-content">
+                <h4>Server Architecture</h4>
+                <p class="muted">Scalable server infrastructure and deployment strategies for production environments.</p>
+                <div class="project-tags">
+                  <span>Architecture</span><span>Deployment</span><span>DevOps</span>
+                </div>
+              </div>
+            </div>
+            <div class="project card themed-card reveal" style="transition-delay: 0.3s;">
+              <img src="./Backend.png" alt="Backend Project" />
+              <div class="project-content">
+                <h4>Authentication & Security</h4>
+                <p class="muted">Implementing secure authentication systems and protecting against common vulnerabilities.</p>
+                <div class="project-tags">
+                  <span>JWT</span><span>Security</span><span>Authentication</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -240,6 +485,7 @@
               <a href="https://www.instagram.com/thesuprememaverick/" target="_blank" rel="noopener" title="Instagram"><img src="./instagram.png" alt="Instagram" style="width:36px;height:36px;border-radius:8px;" /></a>
               <a href="https://twitter.com/" target="_blank" rel="noopener" title="Twitter"><img src="./twitter.png" alt="Twitter" style="width:36px;height:36px;border-radius:8px;" /></a>
               <a href="https://in.linkedin.com/in/suman-behura-7a11a2246" target="_blank" rel="noopener" title="LinkedIn"><img src="./linkedin.png" alt="LinkedIn" style="width:36px;height:36px;border-radius:8px;" /></a>
+              <a href="https://github.com/sumanbehura" target="_blank" rel="noopener" title="Github"><img src="./Github.png" alt="Github" style="width:36px;height:36px;border-radius:8px;" /></a>
             </div>
             <div class="contact-extra-info" style="color:#bfc9e0;font-size:15px;">
               <div>Email: <a href="mailto:sumanbehura100@gmail.com" style="color:var(--accent3);text-decoration:none;">sumanbehura100@gmail.com</a></div>

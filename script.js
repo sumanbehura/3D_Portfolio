@@ -1,4 +1,47 @@
 document.addEventListener('DOMContentLoaded', function () {
+  // --- Sub-page Navigation ---
+  const subpageCards = document.querySelectorAll('[data-subpage]');
+  const backBtn = document.querySelector('.btn-back');
+  const stageMain = document.getElementById('stage-main');
+  const subpages = document.querySelectorAll('.subpage');
+
+  subpageCards.forEach(card => {
+    card.addEventListener('click', function () {
+      const subpageId = this.dataset.subpage;
+      showSubpage(subpageId);
+    });
+  });
+
+  function showSubpage(subpageId) {
+    // Hide main stage
+    stageMain.style.display = 'none';
+    // Hide all subpages
+    subpages.forEach(page => page.style.display = 'none');
+    // Show selected subpage
+    const subpage = document.getElementById(subpageId);
+    if (subpage) {
+      subpage.style.display = 'block';
+      // Show back button with animation
+      backBtn.style.display = 'flex';
+      setTimeout(() => backBtn.style.opacity = '1', 10);
+    }
+  }
+
+  function hideSubpage() {
+    // Show main stage
+    stageMain.style.display = 'block';
+    // Hide all subpages
+    subpages.forEach(page => page.style.display = 'none');
+    // Hide back button
+    backBtn.style.opacity = '0';
+    setTimeout(() => backBtn.style.display = 'none', 300);
+  }
+
+  backBtn.addEventListener('click', function (e) {
+    e.preventDefault();
+    hideSubpage();
+  });
+
   // --- On-scroll reveal animation ---
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
