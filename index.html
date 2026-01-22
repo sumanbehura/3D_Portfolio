@@ -68,11 +68,21 @@
   </head>
 
   <body>
+    <!-- Background Audio -->
+    <audio id="introAudio" preload="auto" loop>
+      <source src="./audio.mp3" type="audio/mpeg">
+    </audio>
+
     <div class="spline-bg-wrapper" style="position: fixed; inset: 0; z-index: -1; pointer-events: none;">
       <spline-viewer loading-anim-type="spinner" url="https://prod.spline.design/fDl0X36rEWOpaPqF/scene.splinecode"></spline-viewer>
     </div>
     
     <header id="siteHeader">
+      <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar menu" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
       <a href="#home" class="logo">
         <img src="./logo.png" alt="Suman Behura Logo" class="logo-img" />
         <div>
@@ -82,8 +92,6 @@
       </a>
       <nav aria-label="Main navigation">
         <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#projects">Work</a>
         <a href="#contact">Contact</a>
         <a class="btn-back" href="#home" style="display: none; opacity: 0;">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
@@ -91,15 +99,48 @@
           </svg>
           <span>Back</span>
         </a>
-        <a class="btn-download-cv" href="./Suman_Behura_CV.pdf" download aria-label="Download CV">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 3v10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-            <path class="arrow-path" d="M8 11l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M21 21H3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <span>Download CV</span>
-        </a>
+        <div class="nav-right">
+          <button class="audio-toggle" id="audioToggle" aria-label="Toggle background music" title="Mute/Unmute">
+            <svg class="volume-on" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 9v6h4l5 5V4L7 9H3z" fill="currentColor"/>
+              <path d="M16.5 12c0-1.77-1.02-3.3-2.5-4.04m0 16.08c1.48-.74 2.5-2.27 2.5-4.04m5.5-4.04V11m0 6v-2m-4-2V9m0 12v-2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <svg class="volume-off" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: none;">
+              <path d="M3 9v6h4l5 5V4L7 9H3z" fill="currentColor"/>
+              <path d="M23 9l-9 9M14 9l9 9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </button>
+          <a class="btn-download-cv" href="./Suman_Behura_CV.pdf" download aria-label="Download CV">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 3v10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              <path class="arrow-path" d="M8 11l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M21 21H3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Download CV</span>
+          </a>
+        </div>
       </nav>
+
+      <!-- Sidebar Menu -->
+      <aside id="sidebar" class="sidebar" aria-label="Navigation sidebar">
+        <nav class="sidebar-nav">
+          <a href="#about" class="sidebar-link">About</a>
+          <a href="#projects" class="sidebar-link">Work</a>
+          <a href="#experience" class="sidebar-link">Experience</a>
+          <a href="#skills" class="sidebar-link">Skills</a>
+          <a href="#certifications" class="sidebar-link">Certifications</a>
+          <a href="#appreciation" class="sidebar-link">Appreciation</a>
+          <a href="#home" class="sidebar-link sidebar-home">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M19 12H5M12 19l-7-7 7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Back to Home
+          </a>
+        </nav>
+      </aside>
+      
+      <!-- Sidebar Overlay -->
+      <div id="sidebarOverlay" class="sidebar-overlay"></div>
     </header>
 
     <main>
@@ -420,7 +461,7 @@
               Feel free to reach out for collaboration, mentoring, or just to say hi!
             </p>
             <p class="muted" style="margin-top: 12px">
-              Email: <a href="mailto:sumanbehura100@gmail.com">sumanbehura100@gmail.com</a>
+              Email: <a href="mailto:sumanbehuraofficial@gmail.com">sumanbehuraofficial@gmail.com</a>
             </p>
           </div>
       </section>
@@ -461,6 +502,228 @@
         </div>
       </section>
 
+      <!-- Work Experience Section -->
+      <section id="experience" class="experience" aria-labelledby="experience-title">
+        <h2 id="experience-title" class="section-heading-animate reveal">Work Experience</h2>
+        <div class="experience-timeline">
+          <div class="experience-item card themed-card reveal">
+            <div class="experience-header">
+              <h3>Senior UI/UX Designer</h3>
+              <p class="experience-company">TechFlow Solutions</p>
+            </div>
+            <p class="experience-period">Jan 2024 - Present</p>
+            <p class="muted">Leading the design system and user experience for a SaaS platform serving over 50,000 users.</p>
+            <div class="experience-highlights">
+              <ul>
+                <li>Designed and implemented component library with 100+ reusable components</li>
+                <li>Improved user engagement by 35% through UX optimization</li>
+                <li>Mentored a team of 3 junior designers</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="experience-item card themed-card reveal" style="transition-delay: 0.1s;">
+            <div class="experience-header">
+              <h3>Full Stack Developer</h3>
+              <p class="experience-company">Creative Minds Agency</p>
+            </div>
+            <p class="experience-period">Jun 2022 - Dec 2023</p>
+            <p class="muted">Developed and maintained web applications for various clients in e-commerce and fintech sectors.</p>
+            <div class="experience-highlights">
+              <ul>
+                <li>Built responsive web applications using React and Node.js</li>
+                <li>Reduced page load time by 40% through optimization techniques</li>
+                <li>Collaborated with cross-functional teams to deliver projects on time</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="experience-item card themed-card reveal" style="transition-delay: 0.2s;">
+            <div class="experience-header">
+              <h3>Junior Web Developer</h3>
+              <p class="experience-company">Digital Ventures Pvt Ltd</p>
+            </div>
+            <p class="experience-period">Jan 2021 - May 2022</p>
+            <p class="muted">Started my career developing frontend interfaces and learning full stack web development.</p>
+            <div class="experience-highlights">
+              <ul>
+                <li>Developed responsive websites using HTML, CSS, and JavaScript</li>
+                <li>Implemented pixel-perfect designs from Figma mockups</li>
+                <li>Participated in code reviews and continuous learning</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Extracurricular Skills Section -->
+      <section id="skills" class="skills" aria-labelledby="skills-title">
+        <h2 id="skills-title" class="section-heading-animate reveal">Extracurricular Skills</h2>
+        <div class="skills-container">
+          <div class="skills-category reveal">
+            <h3>Technical Skills</h3>
+            <div class="skills-grid">
+              <div class="skill-item">
+                <span class="skill-name">React</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 90%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">JavaScript</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 85%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">CSS/SCSS</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 88%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">Node.js</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 80%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">Figma</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 92%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">TypeScript</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 75%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="skills-category reveal" style="transition-delay: 0.1s;">
+            <h3>Soft Skills</h3>
+            <div class="soft-skills-grid">
+              <div class="soft-skill card themed-card">
+                <div class="soft-skill-icon">💡</div>
+                <p>Problem Solving</p>
+              </div>
+              <div class="soft-skill card themed-card">
+                <div class="soft-skill-icon">🤝</div>
+                <p>Team Collaboration</p>
+              </div>
+              <div class="soft-skill card themed-card">
+                <div class="soft-skill-icon">📢</div>
+                <p>Communication</p>
+              </div>
+              <div class="soft-skill card themed-card">
+                <div class="soft-skill-icon">🎯</div>
+                <p>Project Management</p>
+              </div>
+              <div class="soft-skill card themed-card">
+                <div class="soft-skill-icon">📚</div>
+                <p>Continuous Learning</p>
+              </div>
+              <div class="soft-skill card themed-card">
+                <div class="soft-skill-icon">🎨</div>
+                <p>Creative Thinking</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="skills-category reveal" style="transition-delay: 0.2s;">
+            <h3>Other Interests</h3>
+            <div class="interests-list">
+              <div class="interest-item">
+                <span>🎮</span>
+                <p>Game Development</p>
+              </div>
+              <div class="interest-item">
+                <span>🎬</span>
+                <p>Video Creation & Editing</p>
+              </div>
+              <div class="interest-item">
+                <span>🎵</span>
+                <p>Music Production</p>
+              </div>
+              <div class="interest-item">
+                <span>✍️</span>
+                <p>Technical Writing</p>
+              </div>
+              <div class="interest-item">
+                <span>🌐</span>
+                <p>Open Source Contribution</p>
+              </div>
+              <div class="interest-item">
+                <span>🎤</span>
+                <p>Public Speaking</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Certifications Section -->
+      <section id="certifications" class="certifications" aria-labelledby="certifications-title">
+        <h2 id="certifications-title" class="section-heading-animate reveal">Certifications</h2>
+        <div class="certifications-grid">
+          <div class="certification card themed-card reveal">
+            <div class="cert-icon">📜</div>
+            <h3>Web Design Mastery</h3>
+            <p class="muted">Professional Certificate in Modern Web Design</p>
+            <p class="cert-issuer">Issued by Coursera</p>
+            <p class="cert-date">2024</p>
+          </div>
+          <div class="certification card themed-card reveal" style="transition-delay: 0.1s;">
+            <div class="cert-icon">💻</div>
+            <h3>Full Stack JavaScript</h3>
+            <p class="muted">Advanced JavaScript and Web Development</p>
+            <p class="cert-issuer">Issued by freeCodeCamp</p>
+            <p class="cert-date">2023</p>
+          </div>
+          <div class="certification card themed-card reveal" style="transition-delay: 0.2s;">
+            <div class="cert-icon">🎨</div>
+            <h3>UI/UX Design Fundamentals</h3>
+            <p class="muted">User Interface and User Experience Design</p>
+            <p class="cert-issuer">Issued by Udemy</p>
+            <p class="cert-date">2023</p>
+          </div>
+          <div class="certification card themed-card reveal" style="transition-delay: 0.3s;">
+            <div class="cert-icon">⚙️</div>
+            <h3>React Advanced Patterns</h3>
+            <p class="muted">Advanced React.js Development Techniques</p>
+            <p class="cert-issuer">Issued by Frontend Masters</p>
+            <p class="cert-date">2024</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Appreciation Section -->
+      <section id="appreciation" class="appreciation" aria-labelledby="appreciation-title">
+        <div class="appreciation-content">
+          <h2 id="appreciation-title" class="section-heading-animate reveal">Appreciation & Credits</h2>
+          <div class="appreciation-card card themed-card reveal">
+            <p class="appreciation-text">
+              I'm grateful to everyone who has supported me on this journey. Special thanks to my mentors, colleagues, and the amazing open-source community for their invaluable guidance and inspiration.
+            </p>
+            <div class="appreciation-list">
+              <div class="appreciation-item">
+                <h4>Community</h4>
+                <p class="muted">Thanks to the web development community for continuous learning opportunities and support.</p>
+              </div>
+              <div class="appreciation-item">
+                <h4>Mentors</h4>
+                <p class="muted">Grateful to my mentors who shaped my skills and helped me grow as a developer.</p>
+              </div>
+              <div class="appreciation-item">
+                <h4>Open Source</h4>
+                <p class="muted">Appreciation for all open-source projects and their contributors that make development easier.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       <section id="contact" class="contact" aria-labelledby="contact-title">
         <div class="card reveal">
           <h2 id="contact-title" class="section-heading-animate">Get In Touch</h2>
@@ -480,15 +743,23 @@
       <section id="contact-info" aria-labelledby="contact-info-title">
         <div class="card themed-card" style="max-width:520px; margin: 28px auto;">
           <div class="contact-info" style="padding:18px; text-align:center;">
-            <div class="contact-socials" style="display:flex;gap:22px;justify-content:center;margin-bottom:12px;">
-              <a href="https://www.facebook.com/suman.behura/" target="_blank" rel="noopener" title="Facebook"><img src="./facebook.png" alt="Facebook" style="width:36px;height:36px;border-radius:8px;" /></a>
-              <a href="https://www.instagram.com/thesuprememaverick/" target="_blank" rel="noopener" title="Instagram"><img src="./instagram.png" alt="Instagram" style="width:36px;height:36px;border-radius:8px;" /></a>
-              <a href="https://twitter.com/" target="_blank" rel="noopener" title="Twitter"><img src="./twitter.png" alt="Twitter" style="width:36px;height:36px;border-radius:8px;" /></a>
-              <a href="https://in.linkedin.com/in/suman-behura-7a11a2246" target="_blank" rel="noopener" title="LinkedIn"><img src="./linkedin.png" alt="LinkedIn" style="width:36px;height:36px;border-radius:8px;" /></a>
-              <a href="https://github.com/sumanbehura" target="_blank" rel="noopener" title="Github"><img src="./Github.png" alt="Github" style="width:36px;height:36px;border-radius:8px;" /></a>
+            <div class="social-scroll-wrapper">
+              <div class="social-scroll-track">
+                <a href="https://www.facebook.com/suman.behura/" target="_blank" rel="noopener" title="Facebook" class="social-logo"><img src="./facebook.png" alt="Facebook" /></a>
+                <a href="https://www.instagram.com/thesuprememaverick/" target="_blank" rel="noopener" title="Instagram" class="social-logo"><img src="./instagram.png" alt="Instagram" /></a>
+                <a href="https://twitter.com/" target="_blank" rel="noopener" title="Twitter" class="social-logo"><img src="./twitter.png" alt="Twitter" /></a>
+                <a href="https://in.linkedin.com/in/suman-behura-7a11a2246" target="_blank" rel="noopener" title="LinkedIn" class="social-logo"><img src="./linkedin.png" alt="LinkedIn" /></a>
+                <a href="https://github.com/sumanbehura" target="_blank" rel="noopener" title="Github" class="social-logo"><img src="./Github.png" alt="Github" /></a>
+                <!-- Duplicate for seamless loop -->
+                <a href="https://www.facebook.com/suman.behura/" target="_blank" rel="noopener" title="Facebook" class="social-logo"><img src="./facebook.png" alt="Facebook" /></a>
+                <a href="https://www.instagram.com/thesuprememaverick/" target="_blank" rel="noopener" title="Instagram" class="social-logo"><img src="./instagram.png" alt="Instagram" /></a>
+                <a href="https://twitter.com/" target="_blank" rel="noopener" title="Twitter" class="social-logo"><img src="./twitter.png" alt="Twitter" /></a>
+                <a href="https://in.linkedin.com/in/suman-behura-7a11a2246" target="_blank" rel="noopener" title="LinkedIn" class="social-logo"><img src="./linkedin.png" alt="LinkedIn" /></a>
+                <a href="https://github.com/sumanbehura" target="_blank" rel="noopener" title="Github" class="social-logo"><img src="./Github.png" alt="Github" /></a>
+              </div>
             </div>
-            <div class="contact-extra-info" style="color:#bfc9e0;font-size:15px;">
-              <div>Email: <a href="mailto:sumanbehura100@gmail.com" style="color:var(--accent3);text-decoration:none;">sumanbehura100@gmail.com</a></div>
+            <div class="contact-extra-info" style="color:#bfc9e0;font-size:15px; margin-top: 20px;">
+              <div>Email: <a href="mailto:sumanbehuraofficial@gmail.com" style="color:var(--accent3);text-decoration:none;">sumanbehuraofficial@gmail.com</a></div>
               <div>Location: Bhubaneswar, Odisha, India</div>
               <div>Phone: <a href="tel:+916371314722" style="color:var(--accent3);text-decoration:none;">+91 6371314722</a></div>
             </div>
